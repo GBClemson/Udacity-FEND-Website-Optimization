@@ -1,52 +1,7 @@
 ## Website Performance Optimization portfolio project
 
-### How to Access the site:
-1. go to my [Github](https://github.com/GBClemson/Udacity-FEND-Website-Optimization) repository for the project
-2. In there you will see this readme, two folders and a super simple website that links to the original and final projects.
-  * One folder named "src" is the original files and images that I was assigned for the project
-  * Other folder named "dist" is the final files that I have edited with some comments showing some of the changes that were made.
-  * The site is also being hosted by github at............................
-
-### Part 1: Optimize PageSpeed Insights score for index.html
-
-#### Part 1 - Changes Made by Greg Bopp to index.html
-
-1. Downloaded all image assets to utilize locally
-2. Resized and compressed all images.
-3. Used local fonts vs remote fonts.
-4. Brought all css to index.html to avoid linking to other files.
-5. Placed above the fold CSS in my header and placed other CSS below the body.
-6. added an .htaccess file to the server to leverage browser caching.
-7. Placed the links for analytics.js and perfmatters.js below the body.
-
-### Part 2: Optimize Frames per Second in pizza.html
-
-#### Part 2 - Changes Made by Greg Bopp to pizza.html
-1. Moved #movingPizzas1 above the header content and gave it: class="col-md-12" so it is not reconfiguring on window resize
-2. Compressed pizzeria image from 2315kb down to 25kb
-3. Simplified / minimized the nav button code
-4. Removed unnecessary entries from style.css.
-5. Utilized bootstrap classes for centering text and sizing columns.
-6. Moved style.css to pizza.html for Google Page Speed boost.
-7. Set a pixel width for the elements that make up a random pizza entry. This allows for a very simple width change on the pizza image to convey the correct size of the pizza. This allowed the resizePizza function to be dramatically simplified.
-
-#### Part 2 - Steps taken by Greg Bopp to de-jankify main.js
-1. Scaled down and compressed pizza.png. Scaled down to 77x100px since that is the size of the background pizzas. Used http://compresspng.com/ to compress the original size of the pizza.png image from 49kb to 5kb.
-2. Reduced the number of bg pizzas being generated from 200 to 24. Realigned the vertical positions to match the users display. No need to have more than 3 rows of random flying pizza on a screen at a time.
-3. Removed the "updatePostions" inside of: document.addEventListener('DOMContentLoaded', function() {
-4. Made the updatePositions function more efficient by simplifying / changing the following code:
-    * Chanaged className  to classList.
-    * Utilized requestAnimationFrame to only update the pizza positions when we can and not with every scroll / mouse down event.
-    * Utilized style.transform and translateX to update the Xpos of the sliding pizza bg.
-      * This required a simple update in pizza.html where the #movingPizzas1 div was changed to col-md-12 and it is not inside of a row.
-5. Made efficiency improvements to the pizza slider and random generated pizzas:
-    * Simplified the determineDx function. ignoring the windowWdth, simplified the sizes to just be 3 fixed sizes when the pizza slider is used.
-    * Did away with the percentages in sizeSwitcher and simplified the math. Now it is just a simple subtract the old width from the new width and then apply the changes to all of the random pizza pics.
-    * Completely removed the use of "document.querySelectorAll(".randomPizzaContainer")" calls by utilizing getElementsByClassName and querySelector.
-    * Created a variable named numOfPizzas to store the correct number of random pizzas generated.
-    * Took as much math out of the changePizzaSizes for loop as possible. It is now just one line that applies the size changes to each of the random pizza entries.
-6. Went back into resizePizzas function and made more dramatic simplification to the pizza slider calculations:
-    * Completely did away with determineDx and just used the slider to generate a new width for the pizza.png image. This method allows us to completely ignore the old size and just make each element the new size based on the slider position.
+### Access the site:
+1. go to https://gbclemson.github.io/Udacity-FEND-Website-Optimization/views/pizza.html
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
@@ -55,6 +10,16 @@ To get started, check out the repository and inspect the code.
 ### Getting started
 
 #### Part 1: Optimize PageSpeed Insights score for index.html
+
+## Part 1 - Changes Made by Greg Bopp to index.html
+
+1. Downloaded all image assets to utilize locally
+2. Resized and compressed all images.
+3. Used local fonts vs remote fonts.
+4. Brought all css to index.html to avoid linking to other files.
+5. Placed above the fold CSS in my header and placed other CSS below the body.
+6. added an .htaccess file to the server to leverage browser caching.
+7. Placed the links for analytics.js and perfmatters.js below the body.
 
 Some useful tips to help you get started:
 
@@ -79,6 +44,33 @@ Some useful tips to help you get started:
 Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
 
 #### Part 2: Optimize Frames per Second in pizza.html
+
+## Part 2 - Changes Made by Greg Bopp to pizza.html
+1. Moved #movingPizzas1 above the header content and gave it: class="col-md-12" so it is not reconfiguring on window resize
+2. Compressed pizzeria image from 2315kb down to 25kb
+3. Simplified / minimized the nav button code
+4. Removed unnecessary entries from style.css.
+5. Utilized bootstrap classes for centering text and sizing columns.
+6. Moved style.css to pizza.html for Google Page Speed boost.
+7. Set a pixel width for the elements that make up a random pizza entry. This allows for a very simple width change on the pizza image to convey the correct size of the pizza. This allowed the resizePizza function to be dramatically simplified.
+
+## Part 2 - Steps taken by Greg Bopp to de-jankify main.js
+1. Scaled down and compressed pizza.png. Scaled down to 77x100px since that is the size of the background pizzas. Used http://compresspng.com/ to compress the original size of the pizza.png image from 49kb to 5kb.
+2. Reduced the number of bg pizzas being generated from 200 to 24. Realigned the vertical positions to match the users display. No need to have more than 3 rows of random flying pizza on a screen at a time.
+3. Removed the "updatePostions" inside of: document.addEventListener('DOMContentLoaded', function() {
+4. Made the updatePositions function more efficient by simplifying / changing the following code:
+    * Chanaged className  to classList.
+    * Utilized requestAnimationFrame to only update the pizza positions when we can and not with every scroll / mouse down event.
+    * Utilized style.transform and translateX to update the Xpos of the sliding pizza bg.
+    	* This required a simple update in pizza.html where the #movingPizzas1 div was changed to col-md-12 and it is not inside of a row.
+5. Made efficiency improvements to the pizza slider and random generated pizzas:
+    * Simplified the determineDx function. ignoring the windowWdth, simplified the sizes to just be 3 fixed sizes when the pizza slider is used.
+    * Did away with the percentages in sizeSwitcher and simplified the math. Now it is just a simple subtract the old width from the new width and then apply the changes to all of the random pizza pics.
+    * Completely removed the use of "document.querySelectorAll(".randomPizzaContainer")" calls by utilizing getElementsByClassName and querySelector.
+    * Created a variable named numOfPizzas to store the correct number of random pizzas generated.
+    * Took as much math out of the changePizzaSizes for loop as possible. It is now just one line that applies the size changes to each of the random pizza entries.
+6. Went back into resizePizzas function and made more dramatic simplification to the pizza slider calculations:
+    * Completely did away with determineDx and just used the slider to generate a new width for the pizza.png image. This method allows us to completely ignore the old size and just make each element the new size based on the slider position.
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js.
 

@@ -3,9 +3,9 @@
 ### How to Access the site:
 1. go to my [Github](https://github.com/GBClemson/Udacity-FEND-Website-Optimization) repository for the project
 2. In there you will see this readme, two folders and a super simple website that links to the original and final projects.
-  * One folder named "src" is the original files and images that I was assigned for the project
-  * Other folder named "dist" is the final files that I have edited with some comments showing some of the changes that were made.
-  * The site is also being hosted by github at............................
+  * One folder named "src" contains the original files and images that I was assigned for the project
+  * Other folder named "dist" contains the final files that I have edited with some comments showing some the changes that were made.
+  * The site is also being hosted by github at: https://gbclemson.github.io/Udacity-FEND-Website-Optimization/
 
 ### Part 1: Optimize PageSpeed Insights score for index.html
 
@@ -47,6 +47,8 @@
     * Took as much math out of the changePizzaSizes for loop as possible. It is now just one line that applies the size changes to each of the random pizza entries.
 6. Went back into resizePizzas function and made more dramatic simplification to the pizza slider calculations:
     * Completely did away with determineDx and just used the slider to generate a new width for the pizza.png image. This method allows us to completely ignore the old size and just make each element the new size based on the slider position.
+
+## Original Readme contents:
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
